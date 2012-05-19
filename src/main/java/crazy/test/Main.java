@@ -13,13 +13,16 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        MarkovChain markovChain = buildMarkovChain(args);
-        new Gabbleduck(markovChain, System.out).gabble();
+        Parameters parameters = new Parameters();
+        parameters.extract(args);
+        
+        MarkovChain markovChain = buildMarkovChain(parameters.getFileName());
+        new Gabbleduck(markovChain, System.out).gabble(parameters.getMaximumLines());
     }
 
-    private static MarkovChain buildMarkovChain(String[] args) throws FileNotFoundException {
+    private static MarkovChain buildMarkovChain(String fileName) throws FileNotFoundException {
 
-        MarkovChainFactory markovChainFactory = new MarkovChainFactory(new TextualPiece(new FileInputStream(new File(args[0]))), new MarkovChainStateFactory());
+        MarkovChainFactory markovChainFactory = new MarkovChainFactory(new TextualPiece(new FileInputStream(new File(fileName))), new MarkovChainStateFactory());
 
         return markovChainFactory.createMarkovChain();
     }

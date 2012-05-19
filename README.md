@@ -1,31 +1,22 @@
-gabbleduck
-==========BUILD PROJECT
+# gabbleduck
+## Build Project
+Maven is used as build tool. In addition to maven JDK 1.5+ is required. To build the project run the following command in the root folder.
 
-To build the project you require maven installed and java JDK 1.5 or newer.
+    mvn install
 
+##Usage
+The project can be run against the text file bundled with project or with any other text file.
+### Bundled text file
+Execute below to use bundled text file. Please note that java must be in path. 
 
-Execute below statement in same folder as pom.xml
+    mvn exec:exec
+ 
+### Any other text file
+To run against another text file below can be used.
 
-  mvn install
-
-
-
-RUN PROJECT
-
-To run project you can use text file provided or supply your own.
-
-
-1) Execute below to use file provided. (To use this method java must be in 
-
-  mvn exec:exec
-
-  
-2) To run against your own file you can execute the below.
-
-  java -jar gabbleduck-0.1-SNAPSHOT.jar <FILE_NAME> <LINES_TO_GENERATE>
+    java -jar gabbleduck-0.1-SNAPSHOT.jar <FILE_NAME> <LINES_TO_GENERATE>
 
 Explanation of parameters (all manditory).
-
-1) <FILE_NAME> = text file used to build markov chain
-2) <LINES_TO_GENERATE> = number of lines to generate 
+* FILE_NAME = Text file used to build markov chain
+* LINES_TO_GENERATE = Number of lines to generate 
   
